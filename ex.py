@@ -17,7 +17,7 @@ class Test_call(unittest.TestCase):
 		cmde='adb logcat -b event > Event_ITER_'+str(i+1)+'&'
 		os.system(cmdr)
 		os.system(cmde)
-		div = "192.168.4.125:5555"
+		div = "HQ541YL17255"
    		num = "+918019642892"
 		cmd ="adb -s "+div+" shell am start -a android.intent.action.CALL -d tel:"+num+""
        		os.system(cmd)

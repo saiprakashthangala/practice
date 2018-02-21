@@ -1,0 +1,6 @@
+<root name="modem">
+	<root name="voice">
+		<children name="Modem_call" action="python modem_call.py"/>
+		<children name="Modem_message" action="python modem_message1.py"/>
+	</root>
+</root>

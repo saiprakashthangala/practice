@@ -16,7 +16,7 @@ class Test_call(unittest.TestCase):
 		Text="saiprakash is a gud boy"
 		cmd="adb shell am start -a android.intent.action.SENDTO -d sms:"+num
        		os.system(cmd)
-		cmd2="adb shell input text {} sed -e 's/ /\%s/g'".formate(Text)
+		cmd2="adb shell input text $(echo {} | sed -e 's/ /\%s/g')".format(Text)
 		os.system(cmd2)
 		time.sleep(10)
 		cmd3 = "adb shell input keyevent 22"

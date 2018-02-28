@@ -19,6 +19,7 @@ def airplane_off():
 def iter_status(iterations,div):
 	collect_logs()
 	for i in range(iterations):
+		print i+1
 		on=airplane_on()
 		off=airplane_off()
 		if on == off:

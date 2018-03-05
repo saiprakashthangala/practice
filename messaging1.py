@@ -24,12 +24,6 @@ class Test_call(unittest.TestCase):
 		cmd4="adb shell input keyevent 66"
 		os.system(cmd4)
 
-#adb shell am start -a android.intent.action.SENDTO -d sms:+1-222-333-4444
-#adb shell input text "sampletexthere"
-#adb shell input keyevent 66
-
-
-
 if __name__ =='__main__':
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)

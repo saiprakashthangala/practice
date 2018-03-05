@@ -1,6 +1,8 @@
 <root name="modem">
 	<root name="voice">
-		<children name="Modem_call" action="python modem_call.py"/>
-		<children name="Modem_message" action="python modem_message1.py"/>
+		<children name="Modem_call" action="python modem_mo_call.py"/>
+		<children name="Modem_message" action="python modem_mo_message.py"/>
+		<children name="Modem_apm" action="python ariplane.py"/>
+	
 	</root>
 </root>

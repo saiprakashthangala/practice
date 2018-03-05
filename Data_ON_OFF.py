@@ -1,7 +1,8 @@
 import os,time,datetime
 def collect_logs():
-	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Data_ON_OFF_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
+	os.chdir(mydir)
 	cmdr='adb logcat -b > Data_log'+'&'
 	os.system(cmdr)
 def Data_enable(div):

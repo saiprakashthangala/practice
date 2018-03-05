@@ -2,7 +2,7 @@ import os,time,datetime
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
-	cmdr='adb logcat -b radio  > sms_log'+'&'
+	cmdr='adb logcat -b > Data_log'+'&'
 	os.system(cmdr)
 def Data_enable(div):
 		cmd="adb -s "+div+" shell svc data enable"

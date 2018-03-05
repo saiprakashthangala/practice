@@ -1,11 +1,12 @@
 import os,time,datetime
 def collect_logs():
-	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Airplane_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
+	os.chdir(mydir)
 	cmdr='adb logcat -b main | grep  -i AIRPLANE > AIRPLANE_log'+'&'
 	os.system(cmdr)
 def airplane_on():
-		cmd ="adb shell settings put global airplane_mode_on 1" # Enable Airplane mode 
+		cmd ="adb shell settings put global airplane_mode_on 1;adb shell am broadcast -a android.intent.action.AIRPLANE_MODE" # Enable Airplane mode 
 		rc = os.system(cmd)
 		time.sleep(20)
 		print "Airplane mode is on"

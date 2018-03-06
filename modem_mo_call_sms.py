@@ -41,7 +41,7 @@ def iter_status(iteration,div,num,text):
 			break
 		else:
 			print "Test pass"
-			break;
+		
 		
 		
 text= "keee thanks"

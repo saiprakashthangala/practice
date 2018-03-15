@@ -1,4 +1,5 @@
 import os,time,datetime
+import device
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Audio call_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)

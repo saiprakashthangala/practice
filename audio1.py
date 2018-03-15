@@ -4,7 +4,7 @@ import os,time,datetime
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Audio palying_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
-	cmdr='adb logcat -b event  > sms_log'+'&'
+	cmdr='adb logcat -b event  > radio_log'+'&'
 	os.system(cmdr)
 def play_audio():
 		cmd= "adb shell am start -a android.intent.action.VIEW -d file:/storage/emulated/0/Music/sound.mp3 -t audio/mp3"

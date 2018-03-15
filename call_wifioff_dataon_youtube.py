@@ -1,10 +1,12 @@
 import os,time,datetime
 
 def collect_logs():
-	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('call_wifioff_dataon_youtube_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
-	cmdr='adb logcat -b radio  > sms_log'+'&'
+	cmdr='adb logcat -b radio  > radio_log'+'&'
 	os.system(cmdr)
+	cmde='adb logcat -b event  > event_log'+'&'
+	os.system(cmde)
 def call(div,num):
 		cmd1 ="adb -s "+div+" shell am start -a android.intent.action.CALL -d tel:"+num+""
 		rc = os.system(cmd1)

@@ -1,6 +1,6 @@
 import os,time,datetime
 def collect_logs():
-	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime(wifion_dataon_youtube_'%Y-%m-%d_%H-%M-%S'))
+	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('wifion_dataon_youtube_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
 	cmdr='adb logcat -b radio  > radio_log'+'&'
 	os.system(cmdr)

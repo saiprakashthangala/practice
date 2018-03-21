@@ -1,27 +1,32 @@
 import os,time,datetime
+import device, number
 def collect_logs():
-	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Call_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
-	cmdr='adb logcat -b radio | grep  -i call > Call_log'+'&'
+	os.chdir(mydir)
+	cmdr='adb logcat -b radio | grep  -i call > Call_log'+'&'  # call Logs
 	os.system(cmdr)
 def test_call(div,num):
-		cmd ="adb -s "+div+" shell am start -a android.intent.action.CALL -d tel:"+num+""
+		cmd ="adb -s "+div+" shell am start -a android.intent.action.CALL -d tel:"+num # call start 
 		rc = os.system(cmd)
-		time.sleep(10)
-		cmd2 = "adb shell input  keyevent 6"
+		print " CALL CONNECTING ........"
+		time.sleep(40)
+		cmd2 = "adb shell input  keyevent 6" # Call end 
 		os.system(cmd2)
 		return rc
-def iter_status(iter,dev,num):
+def iter_status(iteration,div,num):
 	collect_logs()
-	for i in range(iter):
-		mind = test_call(dev,num)
-		if mind == 0:
+	for i in range(iteration):
+		call= test_call(div,num)
+		if call == 0:
 			print "Test passed"
 		else:
 			print "Test Failed"
 		
-div = "HQ541YL17255"
-num = "+917799221479"
-iter=3
-iter_status(iter,div,num)
+div = device.main()	
+print div,"conncected device "
+num=str(number.number())
+#num = "+917799221479"
+iteration=3
+iter_status(iteration,div,num)
 		

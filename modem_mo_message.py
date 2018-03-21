@@ -5,7 +5,7 @@ def collect_logs():
 	cmdr='adb logcat -b radio  > sms_log'+'&'
 	os.system(cmdr)
 def test_sms(div,num,text):
-		cmd="adb shell am start -a android.intent.action.SENDTO -d sms:"+num
+		cmd="adb shell am start -a android.intent.action.SENDTO -d sms:"+num+" -e stream 'file:///storage/sdcard0/Sk.png/' -t image/png"
 		cmd2="adb shell input text $(echo {} | sed -e 's/ /\%s/g')".format(text)
 		time.sleep(10)
 		cmd3 = "adb shell input keyevent 22"

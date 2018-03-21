@@ -1,5 +1,5 @@
 '''
-Before run the program device.py and Mo_num_msg.csv files having the same folder 
+Before executing this program, "device.py" and "Mo_num_msg.csv" files should present in same folder 
 '''
 
 import os,time,datetime,csv,random

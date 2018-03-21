@@ -1,8 +1,9 @@
 import os,time,datetime
-
+import device,
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('call_wifioff_dataoff_google_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
+	os.chdir(mydir)
 	cmdr='adb logcat -b radio  > sms_log'+'&'
 	os.system(cmdr)
 	cmde='adb logcat -b event  > sms_log'+'&'
@@ -44,7 +45,7 @@ def iter_status(iterations,div):
                 on1=Data_disable(div)
                 play=google()
                 end=end_call()
-div = "ZX1D64GJW6"
-num = "+919000137251"
-iterations=3
+div = device.main()
+num = number.number()
+iterations=input("Enter no off iterations :")
 iter_status(iterations,div)

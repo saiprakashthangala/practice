@@ -1,8 +1,9 @@
 import os,time,datetime
-
+import device,number
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
+	os.chdir(mydir)
 	cmdr='adb logcat -b radio  > sms_log'+'&'
 	os.system(cmdr)
 def call(div,num):
@@ -30,7 +31,7 @@ def iter_status(iterations,div):
                 play1=play_audio()   
                 print i+1
                 
-div = "ZX1D64GJW6"
-num = "+919000137251"
-iterations=3
+div = device.main()
+num = number.number()
+iterations=input("Enter no off iterations :")
 iter_status(iterations,div)

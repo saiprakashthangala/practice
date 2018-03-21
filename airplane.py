@@ -2,7 +2,7 @@
 Before run the program device.py and Mo_num_msg.csv files having the same folder 
 '''
 
-import os,time,datetime
+import os,time,datetime,csv,random
 import device
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Airplane_%Y-%m-%d_%H-%M-%S'))

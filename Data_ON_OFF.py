@@ -1,4 +1,4 @@
-import os,time,datetime,csv
+import os,time,datetime,csv,random
 import device
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Data_ON_OFF_%Y-%m-%d_%H-%M-%S'))

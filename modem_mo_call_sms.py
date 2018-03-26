@@ -2,7 +2,7 @@
 Before run the program device.py and Mo_num_msg.csv files having the same folder 
 '''
 
-import os,time,datetime,csv
+import os,time,datetime,csv,random
 import device
 def collect_logs():
 	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Airplane_%Y-%m-%d_%H-%M-%S'))
@@ -17,6 +17,14 @@ def number():
 	your_list = list(reader)
 	numbers=your_list[0]
 	return random.choice(numbers[1::])
+
+def message():
+	f=open('Mo_num_msg.csv', 'r')
+	reader = csv.reader(f)
+	your_list = list(reader)
+	msg=your_list[1]
+	return random.choice(msg[1::])
+
 def iterations():
 	f=open('Mo_num_msg.csv', 'r')
 	reader = csv.reader(f)
@@ -26,19 +34,17 @@ def iterations():
 def test_call(div,num):
 	cmd="adb shell input  keyevent 3" 		#set home page
 	os.system(cmd)	
-	cmd1 ="adb -s "+div+" shell am start -a android.intent.action.CALL -d tel:"+num 
+	cmd1 ="adb -s "+div+" shell am start -a android.intent.action.CALL -d tel:"+str(num) 
 	rc = os.system(cmd1)				#call start 
 	print " CALL CONNECTING ......... To ",num
-	time.sleep(10)
-	#cmd2 = "adb shell input  keyevent 6"		
-	#os.system(cmd2)					#Call end 
+	time.sleep(5)
 	os.system(cmd)					#set home page
 	return rc
 
 def test_sms(div,num,text):
 	cmd="adb shell input  keyevent 3"		#set home page
 	os.system(cmd)
-	cmd1="adb shell am start -a android.intent.action.SENDTO -d sms:"+num
+	cmd1="adb shell am start -a android.intent.action.SENDTO -d sms:"+str(num)
 	cmd2="adb shell input text $(echo {} | sed -e 's/ /\%s/g')".format(text)				
 	cmd3 = "adb shell input keyevent 22"		
 	cmd4="adb shell input keyevent 66"		
@@ -50,20 +56,23 @@ def test_sms(div,num,text):
 	os.system(cmd)					#set home page
 	return rc
 
-def iter_status(iteration,div,num):
+def iter_status(iteration,div,num,text):
 	collect_logs()
 	print "This program will execute "+str(iteration)+" Iterations"	
 	for i in range(iteration):
+		time.sleep(5)
 		call= test_call(div,num)
 		if call==0:
 			print "Call connecting successfully"
 		else:
 			print "got error while connecting Call " 
 			break;
-
+		time.sleep(5)
 		msg= test_sms(div,num,text)
+		cmd2 = "adb shell input  keyevent 6" # Call end 
+		os.system(cmd2)
 		if msg==0:
-			print "Message sending while successfully"
+			print "Message sending successfully"
 		else:
 			print "got error while sending Call "
 			break;			
@@ -79,7 +88,11 @@ def iter_status(iteration,div,num):
 		
 div = device.main()	
 print div,"conncected device"
-num=number()
-iteration=iterations()
-iter_status(iteration,div,num)
+num=7799221479
+#num=number()
+text="Think votary Think next"
+#text=message()
+iteration=3
+#iteration=iterations()
+iter_status(iteration,div,num,text)
 		

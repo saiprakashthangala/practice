@@ -28,7 +28,9 @@ def log():
 	f1=open("sms_log","r+")
         f2=f1.read()
         var="imsPhone.isVolteEnabled()=true"
-        if var in f2:
+	cmd= 'adb logcat -c radio  > sms_log'+'&'
+        os.system(cmd)
+	if var in f2:
 		print "its a volte call"
 	else:
 		print "its a 4g/3g/2g call"

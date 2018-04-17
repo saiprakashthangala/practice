@@ -1,7 +1,7 @@
 import os,time,datetime,csv,random
 import device;
 def collect_logs():
-	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+	mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('Lte_call_%Y-%m-%d_%H-%M-%S'))
 	os.makedirs(mydir)
         os.chdir(mydir)
 	cmdr='adb logcat -b radio  > sms_log'+'&'

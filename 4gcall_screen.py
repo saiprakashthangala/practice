@@ -40,9 +40,11 @@ def end_call():
 	rc=os.system(cmd2)
         print "call ended"
         return rc
-def iter_status(iteration,div):
+def iter_status(iteration,div,num):
 	collect_logs()
+	print "This program will execute "+str(iteration)+" Iterations"
 	for i in range(iteration):
+		print " CALL CONNECTING ......... To ",num
 		call_on = call(div,num)
                 end= end_call()
                 log1=log()
@@ -50,4 +52,4 @@ div = device.main()
 print div
 num= number()
 iteration=iterations()
-iter_status(iteration,div)
+iter_status(iteration,div,num)
